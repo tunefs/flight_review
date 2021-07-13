@@ -202,6 +202,9 @@ def generate_plots(ulog, px4_ulog, db_data, vehicle_data, link_to_3d_page,
                 [lambda data: ('yaw_sp_move_rate', np.rad2deg(data['yaw_sp_move_rate']))],
                 colors3[2:3], [axis_name+' FF Setpoint [deg/s]'],
                 use_step_lines=True)
+            data_plot.change_dataset('vehicle_gps_position')
+            data_plot.add_graph([lambda data: (axis, np.rad2deg(data['heading']))],
+                                [color_gray], [axis_name+' GPS'])
         data_plot.change_dataset('vehicle_attitude_groundtruth')
         data_plot.add_graph([lambda data: (axis, np.rad2deg(data[axis]))],
                             [color_gray], [axis_name+' Groundtruth'])
